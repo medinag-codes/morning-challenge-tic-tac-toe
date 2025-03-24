@@ -76,8 +76,8 @@ function addXO(e){
 // }
 
 // Reset the Game
-resetBtn.addEventListener('click', reset)
+// resetBtn.addEventListener('click', reset)
 
-function reset(){
-    boardSquare.innerText = ''
-}
+// function reset(){
+//     boardSquare.innerText = ''
+// }

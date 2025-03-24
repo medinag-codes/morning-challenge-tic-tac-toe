@@ -3,16 +3,15 @@
 
 // class/constructor to create different players
 class Player {
-    constructor(score, identity, isStarting){
-        this.score = score;
+    constructor(identity, isStarting){
         this.identity = identity;
         this.isStarting = isStarting;
     }
 }
 
 // identity X or O
-const player1 = new Player(0, 'X', true);
-const player2 = new Player(0, 'O', false);
+const player1 = new Player('X', true);
+const player2 = new Player('O', false);
 const boardSquare = document.querySelectorAll('.boardSquare')
 const resetBtn = document.querySelector('button')
 
@@ -50,34 +49,41 @@ function addXO(e){
 //     [2, 4, 6]
 //     ];
 
-// let winner = document.querySelector('p').innerText
-// let next = document.querySelector('h3').innerText
+let winner = document.querySelector('p').innerText
+let next = document.querySelector('h3').innerText
+console.log(boardSquare[0].innerText)
 
-// if(boardSquare[0] && boardSquare[0] === boardSquare[1] && boardSquare[0] === boardSquare[2]){
-//     return winner = "You Win!"
-// }else if(boardSquare[3] && boardSquare[3] === boardSquare[4] && boardSquare[3] === boardSquare[5]){
-//     return winner = "You Win!"
-// }else if(boardSquare[6] && boardSquare[6] === boardSquare[7] && boardSquare[6] === boardSquare[8]){
-//     return winner = "You Win!"
-// }else if(boardSquare[0] && boardSquare[0] === boardSquare[3] && boardSquare[0] === boardSquare[6]){
-//     return winner = "You Win!"
-// }else if(boardSquare[1] && boardSquare[1] === boardSquare[4] && boardSquare[1] === boardSquare[7]){
-//     return winner = "You Win!"
-// }else if(boardSquare[2] && boardSquare[2] === boardSquare[5] && boardSquare[2] === boardSquare[8]){
-//     return winner = "You Win!"
-// }else if(boardSquare[2] && boardSquare[2] === boardSquare[5] && boardSquare[2] === boardSquare[8]){
-//     return winner = "You Win!"
-// }else if(boardSquare[0] && boardSquare[0] === boardSquare[4] && boardSquare[0] === boardSquare[8]){
-//     return winner = "You Win!"
-// }else if(boardSquare[2] && boardSquare[2] === boardSquare[4] && boardSquare[2] === boardSquare[6]){
-//     return winner = "You Win!"
-// }else{
-//     return next = "Next Player"
-// }
+function checkWin(){
+    if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[1].innerText && boardSquare[0].innerText === boardSquare[2].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[3].innerText && boardSquare[3].innerText === boardSquare[4].innerText && boardSquare[3].innerText === boardSquare[5].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[6].innerText && boardSquare[6].innerText === boardSquare[7].innerText && boardSquare[6].innerText === boardSquare[8].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[3].innerText && boardSquare[0].innerText === boardSquare[6].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[1].innerText && boardSquare[1].innerText === boardSquare[4].innerText && boardSquare[1].innerText === boardSquare[7].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[2].innerText && boardSquare[2].innerText === boardSquare[5].innerText && boardSquare[2].innerText === boardSquare[8].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[2].innerText && boardSquare[2].innerText === boardSquare[5].innerText && boardSquare[2].innerText === boardSquare[8].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[4].innerText && boardSquare[0].innerText === boardSquare[8].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[2].innerText && boardSquare[2].innerText === boardSquare[4].innerText && boardSquare[2].innerText === boardSquare[6].innerText){
+        return winner = "You Win!"
+    }else if(boardSquare[0].innerText && boardSquare[1].innerText && boardSquare[2].innerText && boardSquare[3].innerText && boardSquare[4].innerText && boardSquare[5].innerText && boardSquare[6].innerText && boardSquare[7].innerText && boardSquare[8].innerText){
+        return winner = "It's a draw! Reset and try again"
+    }
+    else{
+        return next = "Next Player"
+    }
+}
+checkWin()
 
 // Reset the Game
-// resetBtn.addEventListener('click', reset)
+resetBtn.addEventListener('click', reset)
 
-// function reset(){
-//     boardSquare.innerText = ''
-// }
+function reset(){
+    boardSquare.innerText = ''
+}

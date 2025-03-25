@@ -68,7 +68,7 @@ function checkWin(){
     }else if((boardSquare[0].innerText=== 'X' || boardSquare[0].innerText=== 'O') && (boardSquare[1].innerText=== 'X' || boardSquare[1].innerText=== 'O') && (boardSquare[2].innerText=== 'X' || boardSquare[2].innerText=== 'O') && (boardSquare[3].innerText=== 'X' || boardSquare[3].innerText=== 'O') && (boardSquare[4].innerText=== 'X' || boardSquare[4].innerText=== 'O') && (boardSquare[5].innerText=== 'X' || boardSquare[5].innerText=== 'O') && (boardSquare[6].innerText=== 'X' || boardSquare[6].innerText=== 'O') && (boardSquare[7].innerText=== 'X' || boardSquare[7].innerText=== 'O') &&(boardSquare[8].innerText=== 'X' || boardSquare[8].innerText=== 'O')){
         document.querySelector('p').innerText = "It's a draw! Reset and try again"
     }else{
-        document.querySelector('h3').innerText = "Next Player"
+        return
     }
 }
 
@@ -79,5 +79,4 @@ resetBtn.addEventListener('click', reset)
 function reset(){
     boardSquare.forEach(square => square.innerText = ' ')
     document.querySelector('p').innerText = ' '
-    document.querySelector('h3').innerText =  ' '
 }

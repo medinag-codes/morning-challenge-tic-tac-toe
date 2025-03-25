@@ -38,3 +38,8 @@ button{
     background-color: red;
     border-radius: 5px;
 }
+
+p{
+    font-size: 2rem;
+    padding-top: 20px;
+}

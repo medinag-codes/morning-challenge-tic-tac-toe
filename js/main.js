@@ -16,9 +16,7 @@ const boardSquare = document.querySelectorAll('.boardSquare')
 const resetBtn = document.querySelector('button')
 
 // Loop throguh node list and add eventListener
-for (let i = 0; i < boardSquare.length; i++){
-    boardSquare[i].addEventListener('click', addXO)
-}
+boardSquare.forEach(square => square.addEventListener('click', addXO))
 
 
 // create a way to place x or o
@@ -51,10 +49,10 @@ function addXO(e){
 
 let winner = document.querySelector('p').innerText
 let next = document.querySelector('h3').innerText
-console.log(boardSquare[0].innerText)
 
 function checkWin(){
     if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[1].innerText && boardSquare[0].innerText === boardSquare[2].innerText){
+        console.log('win')
         return winner = "You Win!"
     }else if(boardSquare[3].innerText && boardSquare[3].innerText === boardSquare[4].innerText && boardSquare[3].innerText === boardSquare[5].innerText){
         return winner = "You Win!"
@@ -74,8 +72,7 @@ function checkWin(){
         return winner = "You Win!"
     }else if(boardSquare[0].innerText && boardSquare[1].innerText && boardSquare[2].innerText && boardSquare[3].innerText && boardSquare[4].innerText && boardSquare[5].innerText && boardSquare[6].innerText && boardSquare[7].innerText && boardSquare[8].innerText){
         return winner = "It's a draw! Reset and try again"
-    }
-    else{
+    }else{
         return next = "Next Player"
     }
 }
@@ -85,5 +82,5 @@ checkWin()
 resetBtn.addEventListener('click', reset)
 
 function reset(){
-    boardSquare.innerText = ''
+    boardSquare.forEach(square => square.innerText = ' ')
 }

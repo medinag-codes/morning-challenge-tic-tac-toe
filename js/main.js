@@ -3,15 +3,14 @@
 
 // class/constructor to create different players
 class Player {
-    constructor(identity, isStarting){
+    constructor(identity){
         this.identity = identity;
-        this.isStarting = isStarting;
     }
 }
 
 // identity X or O
-const player1 = new Player('X', true);
-const player2 = new Player('O', false);
+const player1 = new Player('X');
+const player2 = new Player('O');
 const boardSquare = document.querySelectorAll('.boardSquare')
 const resetBtn = document.querySelector('button')
 
@@ -26,9 +25,11 @@ let counter = 0;
 function addXO(e){
     counter++
     if(counter % 2 === 0){
-        e.target.innerText = 'X';
+        e.target.innerHTML = 'X';
+        checkWin()
     }else if(counter % 2 !== 0){
-        e.target.innerText = 'O';
+        e.target.innerHTML = 'O';
+        checkWin()
     }
 }
 
@@ -47,40 +48,36 @@ function addXO(e){
 //     [2, 4, 6]
 //     ];
 
-let winner = document.querySelector('p').innerText
-let next = document.querySelector('h3').innerText
-
 function checkWin(){
-    if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[1].innerText && boardSquare[0].innerText === boardSquare[2].innerText){
-        console.log('win')
-        return winner = "You Win!"
-    }else if(boardSquare[3].innerText && boardSquare[3].innerText === boardSquare[4].innerText && boardSquare[3].innerText === boardSquare[5].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[6].innerText && boardSquare[6].innerText === boardSquare[7].innerText && boardSquare[6].innerText === boardSquare[8].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[3].innerText && boardSquare[0].innerText === boardSquare[6].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[1].innerText && boardSquare[1].innerText === boardSquare[4].innerText && boardSquare[1].innerText === boardSquare[7].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[2].innerText && boardSquare[2].innerText === boardSquare[5].innerText && boardSquare[2].innerText === boardSquare[8].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[2].innerText && boardSquare[2].innerText === boardSquare[5].innerText && boardSquare[2].innerText === boardSquare[8].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[0].innerText && boardSquare[0].innerText === boardSquare[4].innerText && boardSquare[0].innerText === boardSquare[8].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[2].innerText && boardSquare[2].innerText === boardSquare[4].innerText && boardSquare[2].innerText === boardSquare[6].innerText){
-        return winner = "You Win!"
-    }else if(boardSquare[0].innerText && boardSquare[1].innerText && boardSquare[2].innerText && boardSquare[3].innerText && boardSquare[4].innerText && boardSquare[5].innerText && boardSquare[6].innerText && boardSquare[7].innerText && boardSquare[8].innerText){
-        return winner = "It's a draw! Reset and try again"
-    }else{
-        return next = "Next Player"
+    if((boardSquare[0].innerText=== 'X' || boardSquare[0].innerText=== 'O') && (boardSquare[0].innerText === boardSquare[1].innerText && boardSquare[0].innerText === boardSquare[2].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[3].innerText=== 'X' || boardSquare[3].innerText=== 'O') && (boardSquare[3].innerText === boardSquare[4].innerText && boardSquare[3].innerText === boardSquare[5].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[6].innerText=== 'X' || boardSquare[6].innerText=== 'O') && (boardSquare[6].innerText === boardSquare[7].innerText && boardSquare[6].innerText === boardSquare[8].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[0].innerText=== 'X' || boardSquare[0].innerText=== 'O') && (boardSquare[0].innerText === boardSquare[3].innerText && boardSquare[0].innerText === boardSquare[6].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[1].innerText=== 'X' || boardSquare[1].innerText=== 'O') && (boardSquare[1].innerText === boardSquare[4].innerText && boardSquare[1].innerText === boardSquare[7].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[2].innerText=== 'X' || boardSquare[2].innerText=== 'O') && (boardSquare[2].innerText === boardSquare[5].innerText && boardSquare[2].innerText === boardSquare[8].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[0].innerText=== 'X' || boardSquare[0].innerText=== 'O') && (boardSquare[0].innerText === boardSquare[4].innerText && boardSquare[0].innerText === boardSquare[8].innerText)){
+        document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[2].innerText=== 'X' || boardSquare[2].innerText=== 'O') && (boardSquare[2].innerText === boardSquare[4].innerText && boardSquare[2].innerText === boardSquare[6].innerText)){
+        document.querySelector('p').innerText = "You Win!"
     }
+    // else if(boardSquare[0].innerText && boardSquare[1].innerText && boardSquare[2].innerText && boardSquare[3].innerText && boardSquare[4].innerText && boardSquare[5].innerText && boardSquare[6].innerText && boardSquare[7].innerText && boardSquare[8].innerText){
+    //     document.querySelector('p').innerText = "It's a draw! Reset and try again"
+    // }else{
+    //     document.querySelector('h3').innerText = "Next Player"
+    // }
 }
-checkWin()
+
 
 // Reset the Game
 resetBtn.addEventListener('click', reset)
 
 function reset(){
     boardSquare.forEach(square => square.innerText = ' ')
+    document.querySelector('p').innerText = ' '
 }

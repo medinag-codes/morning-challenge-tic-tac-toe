@@ -25,10 +25,10 @@ let counter = 0;
 function addXO(e){
     counter++
     if(counter % 2 === 0){
-        e.target.innerHTML = 'X';
+        e.target.innerHTML = 'O';
         checkWin()
     }else if(counter % 2 !== 0){
-        e.target.innerHTML = 'O';
+        e.target.innerHTML = 'X';
         checkWin()
     }
 }
@@ -65,12 +65,11 @@ function checkWin(){
         document.querySelector('p').innerText = "You Win!"
     }else if((boardSquare[2].innerText=== 'X' || boardSquare[2].innerText=== 'O') && (boardSquare[2].innerText === boardSquare[4].innerText && boardSquare[2].innerText === boardSquare[6].innerText)){
         document.querySelector('p').innerText = "You Win!"
+    }else if((boardSquare[0].innerText=== 'X' || boardSquare[0].innerText=== 'O') && (boardSquare[1].innerText=== 'X' || boardSquare[1].innerText=== 'O') && (boardSquare[2].innerText=== 'X' || boardSquare[2].innerText=== 'O') && (boardSquare[3].innerText=== 'X' || boardSquare[3].innerText=== 'O') && (boardSquare[4].innerText=== 'X' || boardSquare[4].innerText=== 'O') && (boardSquare[5].innerText=== 'X' || boardSquare[5].innerText=== 'O') && (boardSquare[6].innerText=== 'X' || boardSquare[6].innerText=== 'O') && (boardSquare[7].innerText=== 'X' || boardSquare[7].innerText=== 'O') &&(boardSquare[8].innerText=== 'X' || boardSquare[8].innerText=== 'O')){
+        document.querySelector('p').innerText = "It's a draw! Reset and try again"
+    }else{
+        document.querySelector('h3').innerText = "Next Player"
     }
-    // else if(boardSquare[0].innerText && boardSquare[1].innerText && boardSquare[2].innerText && boardSquare[3].innerText && boardSquare[4].innerText && boardSquare[5].innerText && boardSquare[6].innerText && boardSquare[7].innerText && boardSquare[8].innerText){
-    //     document.querySelector('p').innerText = "It's a draw! Reset and try again"
-    // }else{
-    //     document.querySelector('h3').innerText = "Next Player"
-    // }
 }
 
 
@@ -80,4 +79,5 @@ resetBtn.addEventListener('click', reset)
 function reset(){
     boardSquare.forEach(square => square.innerText = ' ')
     document.querySelector('p').innerText = ' '
+    document.querySelector('h3').innerText =  ' '
 }
